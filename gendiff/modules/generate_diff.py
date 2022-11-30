@@ -4,11 +4,11 @@ import json
 def sorted_dictionary(d):
     new_d = d.copy()
     new_d = dict(sorted(new_d.items(), key=lambda x: x[0][0]))
-    for v in new_d.values():
+    for k, v in new_d.items():
         if v is True:
-            v = 'true'
+            new_d[k] = 'true'
         if v is False:
-            v = 'false'
+            new_d[k] = 'false'
     return new_d
 
 
