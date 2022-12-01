@@ -1,4 +1,5 @@
 import json
+import yaml
 
 
 def sorted_dictionary(d):
@@ -36,9 +37,15 @@ def diff_key(d1, d2):
 
 
 def generate_diff(file1_path, file2_path):
-    f1_open = open(file1_path)
-    f2_open = open(file2_path)
-    f1 = json.load(f1_open)
-    f2 = json.load(f2_open)
+    f1_open = open(file1_path, 'r')
+    f2_open = open(file2_path, 'r')
+    if file1_path.endswith('.json'):
+        f1 = json.load(f1_open)
+    else:
+        f1 = yaml.safe_load(f1_open)
+    if file2_path.endswith('.json'):
+        f2 = json.load(f2_open)
+    else:
+        f2 = yaml.safe_load(f2_open)
     result = diff_key(f1, f2)
     return result
