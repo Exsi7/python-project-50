@@ -1,5 +1,6 @@
 import json
 import yaml
+from gendiff.format.stylish import stylish
 
 
 def open_file(file_path):
@@ -45,24 +46,6 @@ def diff_dict(d1, d2):
             result['- ' + str(k)] = d1[k]
             result['+ ' + str(k)] = d2[k]
     return result
-
-
-def stylish(value, replacer=' ', space_count=2):
-    plus = space_count
-
-    def walk(value, replacer, space_count):
-        value = sorted_dict(value)
-        line = ''
-        end = space_count - plus
-        for k, v in value.items():
-            if (not
-               (k.startswith('+') or k.startswith('-') or k.startswith('  '))):
-                k = '  ' + k
-            if isinstance(v, dict):
-                v = walk(v, replacer, space_count + plus * 2)
-            line = line + (f'{replacer*space_count}{k}: {v}\n')
-        return ('{\n' + line + replacer * end + '}')
-    return walk(value, replacer, space_count)
 
 
 def generate_diff(file1_path, file2_path, format=stylish):

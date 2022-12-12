@@ -1,6 +1,7 @@
 import argparse
 from gendiff import generate_diff
-from gendiff.modules.generate_diff import stylish, text_s
+from gendiff.format.stylish import stylish
+from gendiff.format.plain import plain
 
 
 def parse():
@@ -9,11 +10,10 @@ def parse():
     )
     parser.add_argument('first_file')
     parser.add_argument('second_file')
-    parser.add_argument('-f', '--format', choices=['text_s'], default=stylish,
+    parser.add_argument('-f', '--format', choices=['plain'], default=stylish,
                         help='set format of output')
     args = parser.parse_args()
-    print(args.format)
-    if args.format == 'text_s':
-        print((generate_diff(args.first_file, args.second_file, text_s)))
+    if args.format == 'plain':
+        print((generate_diff(args.first_file, args.second_file, plain)))
     else:
-        print(generate_diff(args.first_file, args.second_file, args.format))
+        print(generate_diff(args.first_file, args.second_file))
