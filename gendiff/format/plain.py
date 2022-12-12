@@ -8,9 +8,15 @@ def create_path(path, k):
         return path + '.' + k
 
 
-def create_line(k, v, value, line, begin):
-    if v != 'true' and v != 'false' and v != 'null' and v != '[complex value]':
+def format_values(v):
+    list_format = ['true', 'false', 'null', '[complex value]']
+    if v not in list_format and not isinstance(v, int):
         v = (f'\'{v}\'')
+    return v
+
+
+def create_line(k, v, value, line, begin):
+    v = format_values(v)
     if '+ ' + k[2:] in value and '- ' + k[2:] in value:
         if k == '- ' + k[2:]:
             line = line + (f'{begin} was updated. From {v} to ')
