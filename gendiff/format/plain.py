@@ -42,4 +42,4 @@ def plain(value):
                 v = '[complex value]'
             line = create_line(k, v, value, line, begin)
         return line
-    return walk(value, '')
+    return walk(value, '')[:-1]
