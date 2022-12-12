@@ -21,12 +21,12 @@ def test_generate_diff_yaml():
 def test_plain():
     f = open('tests/fixtures/result_plain.txt', 'r')
     result = f.read()
-    assert generate_diff(file1, file2, plain) == result
-    assert generate_diff(file3, file4, plain) == result
+    assert generate_diff(file1, file2, 'plain') == result
+    assert generate_diff(file3, file4, 'plain') == result
 
 
 def test_format_json():
     f = open('tests/fixtures/result_f_json.txt', 'r')
     result = f.read()
-    assert generate_diff(file1, file2, format_json) == result
-    assert generate_diff(file1, file2, format_json) == result
+    assert generate_diff(file1, file2, 'json') == result
+    assert generate_diff(file1, file2, 'json') == result
