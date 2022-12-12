@@ -14,10 +14,9 @@ def parse():
     parser.add_argument('-f', '--format', choices=['plain', 'json'],
                         default=stylish, help='set format of output')
     args = parser.parse_args()
-    diff = generate_diff(args.first_file, args.second_file)
     if args.format == 'plain':
-        print(plain(diff))
+        print((generate_diff(args.first_file, args.second_file, plain)))
     elif args.format == 'json':
-        print(format_json(diff))
+        print(generate_diff(args.first_file, args.second_file, format_json))
     else:
-        print(stylish(diff))
+        print(generate_diff(args.first_file, args.second_file))
