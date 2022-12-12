@@ -52,5 +52,4 @@ def generate_diff(file1_path, file2_path, format=stylish):
     f1 = open_file(file1_path)
     f2 = open_file(file2_path)
     diff = diff_dict(f1, f2)
-    result = format(diff)
-    return result
+    return format(diff)
