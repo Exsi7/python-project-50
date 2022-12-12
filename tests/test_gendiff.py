@@ -1,12 +1,11 @@
 from gendiff import generate_diff
-from gendiff.format.plain import plain
-from gendiff.format.format_json import format_json
 
 
 file1 = 'tests/fixtures/file1.json'
 file2 = 'tests/fixtures/file2.json'
 file3 = 'tests/fixtures/file3.yml'
 file4 = 'tests/fixtures/file4.yml'
+
 
 def test_generate_diff_json():
     f = open('tests/fixtures/result_json.txt', 'r')
