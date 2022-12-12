@@ -7,8 +7,9 @@ def create_path(path, k):
     else:
         return path + '.' + k
 
+
 def create_line(k, v, value, line, begin):
-    if  v != 'true' and v != 'false' and v != 'null' and v != '[complex value]':
+    if v != 'true' and v != 'false' and v != 'null' and v != '[complex value]':
         v = (f'\'{v}\'')
     if '+ ' + k[2:] in value and '- ' + k[2:] in value:
         if k == '- ' + k[2:]:
@@ -16,9 +17,9 @@ def create_line(k, v, value, line, begin):
         else:
             line = line + (f'{v}\n')
     elif k.startswith('+ '):
-                line = line + (f'{begin} was added with value: {v}\n')
+        line = line + (f'{begin} was added with value: {v}\n')
     elif k.startswith('- '):
-                line = line + (f'{begin} was removed\n')
+        line = line + (f'{begin} was removed\n')
     return line
 
 
