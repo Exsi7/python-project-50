@@ -51,6 +51,6 @@ def diff_dict(d1, d2):
 def generate_diff(file1_path, file2_path, form=stylish):
     f1 = open_file(file1_path)
     f2 = open_file(file2_path)
-    fun = form()
+    fun = form
     diff = diff_dict(f1, f2)
     return fun(diff)
