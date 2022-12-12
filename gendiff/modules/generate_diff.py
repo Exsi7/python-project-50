@@ -3,6 +3,9 @@ import yaml
 from gendiff.format.stylish import stylish
 
 
+fun = stylish
+
+
 def open_file(file_path):
     if file_path.endswith('.json'):
         return json.load(open(file_path))
@@ -48,7 +51,7 @@ def diff_dict(d1, d2):
     return result
 
 
-def generate_diff(file1_path, file2_path, format=stylish):
+def generate_diff(file1_path, file2_path, format=fun):
     f1 = open_file(file1_path)
     f2 = open_file(file2_path)
     d = diff_dict(f1, f2)
